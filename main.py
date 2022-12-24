@@ -6,8 +6,6 @@ import faker
 fake = faker.Faker("ru")
 
 
-def generator():
-
 
 def title_name():
     filename = "books.txt"
@@ -61,6 +59,3 @@ pk = next(counter)
 
 if __name__ == '__main__':
     def main():
-
-
-
