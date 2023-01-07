@@ -3,18 +3,22 @@ import faker
 fake = faker.Faker("ru")
 
 
-def book_length(fn):
-    def wrapper(*args: str):
-        result = fn(*args)
-        if len(result) > 45:
-            raise ValueError("Длина названия книги превышает заданное значение")
+def parametr(length):
+    """ Предлагает выбрать максимальное значение длины названия книги """
+    def book_length(fn):
+        def wrapper(*args: str):
+            result = fn(*args)
+            if len(result) > length:
+                raise ValueError("Длина названия книги превышает заданное значение")
 
-        return result
+            return result
 
-    return wrapper
+        return wrapper
+
+    return book_length
 
 
-@book_length
+@parametr(50)
 def title_name() -> str:
     """
     Возвращает название книги
